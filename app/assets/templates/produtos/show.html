@@ -1,0 +1,16 @@
+<h1>Produtos</h1>
+<h3>Detalhamento do Produto</h3>
+<div>
+    <br/>
+    Id: {{produto.id}}
+    
+    <br/>
+    Nome: {{produto.nome}}
+
+    <br />    
+    Preço: R${{produto.preco}}
+    
+    <br />
+    <a ng-href="#/produtos/{{produto.id}}/edit">Editar Produto</a>
+    <a href="" ng-click="deleteProduto(produto)">Excluir Produto</a>
+</div>

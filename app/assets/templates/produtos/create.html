@@ -1,0 +1,15 @@
+<h1>Produtos</h1>
+<h3>Novo Produto</h3>
+<div>
+    <br/>
+    Nome:
+    <input type="text" ng-model="produto.nome" />
+
+    <br />
+    Preço:
+    <input type="text" ng-model="produto.preco" />
+
+    <br />
+    <input type="submit" value="Salvar" ng-click="saveProduto(produto)" ng-disabled="isSubmitting"/>
+    
+</div>

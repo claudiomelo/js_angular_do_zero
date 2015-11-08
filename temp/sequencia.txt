@@ -1,0 +1,47 @@
+-----------
+Angular.js 
+-----------
+
+======== App =========
+
+- Criar o arquivo index.html
+- Importar os scripts (angular, angular-route, angular-resource)
+- Criar o módulo principal da aplicação
+
+===== Controller =====
+
+- Criar Controllers
+
+======= Routes =======
+
+- Criar Templates e routes:
+    (routes)            (controller)        (templateUrl)
+    ----------------------------------------------------------
+    /produto            + ProdutoIndexCtrl  => index.html
+    /produto/:id        + ProdutoShowCtrl   => show.html
+    /produto/:id/edit   + ProdutoEditCtrl   => edit.html
+    /produto/new        + ProdutoNewCtrl    => create.html
+
+- Adicionar a diretiva 'ng-view' ao index.html
+- Testar as routes via browser 
+    index.html#/produto
+    index.html#/produto/:id
+    index.html#/produto/:id/edit
+    index.html#/produto/new
+
+- Listar exemplos de produtos com diretiva ng-repeat
+
+====== Services =======
+
+- Criar service
+- Usar o ngResource no service
+    $resource('/produto/:id', {id: "@id"}, {
+        update : {
+          method: "PUT"
+        }
+    });
+
+
+---------
+Node.js
+---------

@@ -1,0 +1,73 @@
+--------------------------------------------------------------
+Node.js
+
+- Baseado na engine JavaScrit V8 do Google Chrome.
+- Arquitetura baseada em 'non-blocking thread' (não-bloqueante).
+- Orientado a eventos (connect, open, data)
+- Alta peformance e baixo consumo de memória.
+- Ideal para aplicação que necessitam de processamento elevado.
+- Cada aplicação é single-thread, ou seja, um único processo por aplicação.
+- Gerenciado de pacote NPM (Node Package Manager)
+
+--------------------------------------------------------------
+Node.js - package.json
+
+- Todo projeto Node é considerado um módulo.
+- Requer um arquivo descritor chamado 'package.json'.
+
+{
+  "name": "angularjs_expressjs_nodejs",
+  "version": "1.0.0",
+  "description": "Projeto exemplo usando Angular, Express e Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ythalo Rossy",
+  "license": "ISC"
+}
+
+--------------------------------------------------------------
+Node.js - Servidor Http
+
+Criando um servidor HTTP
+
+var http = require('http');	<< requir o módulo HTTP
+
+var server = http.createServer(function (request, response) {	<< Cria um receptor de requisições 
+	console.log("Cliente acesso...");
+	response.writeHead(200, {"Content-Type":"text/html"});
+	response.write("<h1>Angular.js</h1>");
+	response.end();
+});
+
+server.listen(3000, function () {		<< Inicia o servidor
+	console.log("Servidor iniciou...");
+});
+
+--------------------------------------------------------------
+Node.js - Rotas
+
+Criando rotas alternativas
+
+var fs = require('fs');
+
+"Observação na forma de carregar o módulo http"
+require('http').createServer(function (request, response) {
+
+	if (request.url === "/") {
+		
+		fs.readFile(__dirname + 'index.html', function (err, html) {
+			response.write(html);
+			response.end();
+		});
+		
+	} else if (request.url === "/usuarios") {
+		response.write("Pagina Usuarios");
+	}
+
+	response.end();
+
+}).listen(3000, function () {
+	console.log("Servidor iniciou...");
+});
