@@ -1,35 +1,39 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+// Create express function
 var app = express();
 
+// Import routes
 var produtoRoute = require('./routes/produto');
 
-app.use('/', express.static('app/'));
+// Default folder to files (css, js, images)
+app.use('/', express.static('app'));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+// Convert the data from request to JSON
 // Converte os dados do request em um JSON
 app.use(bodyParser.json());
 
 // ===== Rotas =====
 
-// Rota padrão para o arquivo index.html (Angular)
-app.get('/', function(req, res) {
-  res.sendfile('index.html', {
-    root: app.settings.views
-  });
-});
-
+// Routes to handler REST request
 // Rotas para tratar as requisições REST
 app.use('/produto', produtoRoute);
 
-// Inicia o servidor
+// Default route to file index.html (Angular)
+// Rota padrão para o arquivo index.html (Angular)
+app.get('*', function(req, res) {
+  res.sendFile('index.html');
+});
 
-var server = app.listen(process.env.PORT, function() {
+// Start Server instance
+// Inicia o servidor
+var server = app.listen(process.env.PORT | 3000, function() {
   var host = server.address().address;
   var port = server.address().port;
 
