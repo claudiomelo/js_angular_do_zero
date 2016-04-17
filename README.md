@@ -1,5 +1,6 @@
 # Angular - Start from scratch
-Simple example using Angular.js + Node.js (Express)
+
+Angular.js + Node.js (Express)
 
 ## Some videos recorded and when I was developing this project
 
